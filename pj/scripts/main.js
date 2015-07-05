@@ -1,4 +1,15 @@
 var fs = require('fs');
+var fse = require('fs.extra');
+var gui = require('nw.gui');
+var win = gui.Window.get();
+
+$("#minimize").click(function() {
+	win.minimize();
+});
+
+$("#close").click(function() {
+	win.close();
+});
 
 $("#btnSource").on("click",function() {
 	$("#source").trigger("click");
@@ -14,6 +25,11 @@ $("#btnDestination").on("click",function() {
 	});
 });
 
+$('.nav-item').click(function() {
+	var id = $(this).attr('aria-controls');
+	$('a[aria-controls="'+id+'"]').tab('show');
+});
+
 $("#input").change(function() {
 	var filePath = $(this).val();
 	$("#valInput").html(filePath);
@@ -21,6 +37,19 @@ $("#input").change(function() {
 		$("#inputContent").html(contents);
 		contents = contents.split("\n");
 		alert(contents.length);
-		fs.createReadStream('C:\\Users\\SHEKHAR\\Desktop\\images\\source\\sample.txt').pipe(fs.createWriteStream('C:\\Users\\SHEKHAR\\Desktop\\images\\destination\\sample.txt'));
+		// fs.createReadStream('C:\\Users\\SHEKHAR\\Desktop\\images\\source\\sample.txt').pipe(fs.createWriteStream('C:\\Users\\SHEKHAR\\Desktop\\images\\destination\\sample.txt'));
+
+		fse.copy('C:\\Users\\SHEKHAR\\Desktop\\images\\source\\sample.txt', 
+			'C:\\Users\\SHEKHAR\\Desktop\\images\\destination\\sample.txt', 
+			{ replace: true }, 
+			function (err) {
+			  if (err) {
+			    // i.e. file already exists or can't write to directory 
+			    console.error(err);
+			    throw err;
+			  }
+			 
+			  console.log("Copied 'sample.txt' to 'sample.txt'");
+			});	
 	});
 });

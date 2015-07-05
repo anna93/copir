@@ -1,9 +1,14 @@
 {
-	"main":"index.html",
-	"name":"Hello",
-	"window": {
-	    "frame": false,
-	    "toolbar": false,
-	    "resizable": false
-	  }
+  "main": "index.html",
+  "name": "Hello",
+  "window": {
+    // "frame": false,
+    // "toolbar": false,
+    "resizable": false,
+    "width": 800,
+    "height": 600
+  },
+  "dependencies": {
+    "fs.extra": "^1.3.2"
+  }
 }

@@ -1,0 +1,81 @@
+html, body {
+	background-color: #101010 !important;
+	color: white !important;
+	-webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    cursor:default;
+}
+
+#header {
+	padding: 5px;
+	height: 90px;
+	border-bottom: 1px #505050 solid;
+}
+
+#header h1 {
+	position: relative;
+	top:-5px;
+	display: inline;
+	font-size: 50px;
+	color: orange;
+}
+
+#window-controls {
+	float: right;
+	font-size: 24px;
+}
+
+#minimize, #close {
+	font-size: 30px;
+	position: relative;
+	top: -4px;
+	-webkit-transition: color 0.5s; /* Safari */
+    transition: color 0.5s;
+}
+
+#close:hover {
+	color: red;
+}
+
+#minimize {
+	top: 1px;
+	right: -10px;
+}
+
+#minimize:hover {
+	color: #87CEEB;
+}
+
+.octicon {
+	padding: 0px;
+	height: 24px !important;
+}
+
+#top-nav {
+}
+
+.nav-item {
+	font-size: 14px;
+	display: inline-block;
+	padding: 3px 7px;
+	margin-left: 2px;
+	background-color: #303030;
+	-webkit-transition: background-color 0.2s; /* Safari */
+    transition: background-color 0.2s;
+}
+
+.nav-item.active {
+	background-color: #505050;
+}
+
+.nav-item:hover {
+	background-color: #505050;
+}
+
+.tab-content {
+	padding: 5px;
+}
