@@ -85,8 +85,9 @@ html, body {
 }
 
 .tab-pane {
-	height: 83.2%;
+	height: 83%;
 	overflow-y: auto; 
+	overflow-x: hidden; 
 }
 
 .tab-pane::-webkit-scrollbar-track

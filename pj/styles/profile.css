@@ -1,0 +1,61 @@
+.profile-add-btn {
+	width: 200px;
+	height: 50px;
+	border: 1px #219ab3 solid;
+	margin: 5px 10px;
+	color: #219ab3;
+	padding: 8px;
+	text-align: center;
+	-webkit-transition: all 0.5s; /* Safari */
+    transition: all 0.5s;
+}
+
+.profile-add-btn:hover {
+	color: white;
+	background-color: #219ab3;
+}
+
+.input-folder {
+	height: 40px;
+	width: 320px;
+	background-color: #219ab3;
+	padding-left: 8px;
+	display: inline-block;
+}
+
+.input-folder span {
+	margin-top: 5px;
+	margin-right: 5px;
+}
+
+.input-folder input {
+	position: relative;
+	top: -6px;
+	width: 275px;
+	height: 40px;
+	background-color: black;
+	border: 1px #219ab3 solid;
+	font-size: 16px;
+	color: #219ab3;
+}
+
+.profile-name-input {
+	width: 320px;
+	height: 40px;
+	background-color: black;
+	border: 1px #219ab3 solid;
+	font-size: 16px;
+	color: #219ab3;	
+}
+
+input {
+	-webkit-transition: all 0.5s; /* Safari */
+    transition: all 0.5s;
+}
+
+input:focus {
+	outline: 0;
+	-webkit-box-shadow: 0px 0px 10px 0px rgba(33,154,179,1);
+-moz-box-shadow: 0px 0px 10px 0px rgba(33,154,179,1);
+box-shadow: 0px 0px 10px 0px rgba(33,154,179,1);
+}
