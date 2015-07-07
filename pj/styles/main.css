@@ -14,6 +14,8 @@ html, body {
 	padding: 5px;
 	height: 90px;
 	border-bottom: 1px #505050 solid;
+	-webkit-app-region: drag;
+	-webkit-user-select: none;
 }
 
 #header h1 {
@@ -27,6 +29,7 @@ html, body {
 #window-controls {
 	float: right;
 	font-size: 24px;
+	-webkit-app-region: no-drag;
 }
 
 #minimize, #close {
@@ -56,6 +59,7 @@ html, body {
 }
 
 #top-nav {
+	-webkit-app-region: no-drag;
 }
 
 .nav-item {
@@ -81,8 +85,8 @@ html, body {
 }
 
 .tab-pane {
-	height: 460px;
-	overflow-y: scroll; 
+	height: 83.2%;
+	overflow-y: auto; 
 }
 
 .tab-pane::-webkit-scrollbar-track

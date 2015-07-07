@@ -2,8 +2,8 @@
   "main": "index.html",
   "name": "Hello",
   "window": {
-    // "frame": false,
-    // "toolbar": false,
+    "frame": false,
+    "toolbar": false,
     "resizable": false,
     "width": 800,
     "height": 600
