@@ -34,24 +34,27 @@
 	  <!-- Tab panes -->
 	  <div class="tab-content">
 	    <div role="tabpanel" class="tab-pane fade in active" id="profile">
-	    	
+	    	<center>
 	    	<div class="profile-add-container">	    		
-		    	<form>
-		    		<input class="profile-name-input" placeholder="  Profile Name"><br>
+		    	<form id="add-profile-form">
+		    		<!-- <input class="profile-name-input" placeholder="Profile Name"><br>
 		    		<div class="input-folder">
 		    			<span class="mega-octicon octicon-file-directory"></span>
-	  					<input placeholder="  Source Folder">
+	  					<input readonly placeholder="Source Folder">
 		    		</div><br>
 		    		<div class="input-folder">
 		    			<span class="mega-octicon octicon-file-directory"></span>
-	  					<input placeholder="  Destination Folder">
+	  					<input readonly placeholder="Destination Folder">
 		    		</div><br>
-		    		<button class="input-button">Save</button>
+		    		<div style="margin-top:20px;width:100%;border-top:1px gray solid" id="form-separator-1"></div> -->
+		    		<!-- <button class="input-button">Save</button> -->
 		    	</form>
 	    	</div>
+	    	</center>
+	    	<br>
 	    	<div class="row">
 	    		<center>
-	    		<div class="profile-add-btn"><span class="mega-octicon octicon-diff-added"></span></div>
+	    		<div class="profile-add-btn"><span class="mega-octicon octicon-plus"></span></div>
 	    		</center>
 	    	</div>
 	    </div>
@@ -87,4 +90,5 @@
 <script type="text/javascript" src="bower_components/jquery/dist/jquery.js"></script>
 <script type="text/javascript" src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="scripts/main.js"></script>
+<script type="text/javascript" src="scripts/profile.js"></script>
 </html>

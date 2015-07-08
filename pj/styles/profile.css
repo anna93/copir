@@ -1,16 +1,15 @@
 .profile-add-container {
 	padding: 5px;
 	width: 335px;
-	height: 190px;
 }
 
 .profile-add-btn {
-	width: 200px;
-	height: 50px;
+	width: 120px;
+	height: 40px;
 	border: 1px #219ab3 solid;
 	margin: 5px 10px;
 	color: #219ab3;
-	padding: 8px;
+	padding: 3px;
 	text-align: center;
 	-webkit-transition: all 0.5s; /* Safari */
     transition: all 0.5s;
@@ -47,6 +46,7 @@
 }
 
 .profile-name-input {
+	margin-top: 20px;
 	width: 320px;
 	height: 40px;
 	background-color: black;
@@ -56,6 +56,7 @@
 }
 
 input {
+	padding: 5px 10px; 
 	-webkit-transition: all 0.2s; /* Safari */
     transition: all 0.2s;
 }
@@ -68,8 +69,7 @@ input:focus {
 }
 
 .input-button, .input-button:focus {
-	float: right;
-	margin-right: 5px;
+	margin-right: 2px;
 	margin-top: 7px;
 	height: 40px;
 	width: 120px;
