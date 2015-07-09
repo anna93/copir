@@ -1,4 +1,28 @@
 var profileFile = fs.open('userdata/profiles.json', 'a+');
+var profileData = [];
+fs.readFile('userdata/profiles.json','utf8',function(err,data) {
+	if (err) {
+		throw err;
+		alert("Could not open user profile, exiting.");
+		win.close();
+	}
+    if(data != "") {
+	    try{
+	        profileData=$.parseJSON(data);
+	        if(profileData.hasOwnProperty("profiles")) {
+	        	profileData = profileData["profiles"];
+	        	generateProfileCards();
+	        }
+	    }catch(e){
+	        alert("Corrupted user profile, exiting");
+	        win.close();
+	    }    
+	}
+});
+
+function generateProfileCards() {
+	alert(profileData);
+}
 
 function addNewForm() {
 	var numericId = 1;
@@ -69,17 +93,40 @@ function validations() {
 
 	if(error) {
 		alert("One or more fields are empty!");
-		return
+		return false;
 	}
+	return true;
 }
 
 function submitAddProfileForm(e) {
   	e.preventDefault();
-  	validations();
-  	console.log(fs);
+  	if(validations()) {
+  		$("[id^=tmp-container]").each(function() {
+  			var numericId = $(this).attr("id").split("-")[2]; 
+  			var tmpObj = {};
+  			tmpObj.name = ($("#profile-name-input-"+numericId).val());
+  			tmpObj.source = ($("#source-input-"+numericId).val());
+  			tmpObj.destination = ($("#destination-input-"+numericId).val());
+  			profileData.push(tmpObj);
+  		});
+  		var objProfileData = {};
+  		objProfileData.profiles = profileData;
+  		fs.writeFile('userdata/profiles.json',JSON.stringify(objProfileData, null, 4),function(err) {
+  			if (err) {
+  				throw err;
+  			}
+  			alert("Sexes");
+  		});
+  		console.log(JSON.stringify(objProfileData));
+  	}
+}
+
+function docReady() {
+
 }
 
 $(".profile-add-btn").click(addNewForm);
 $("div").on("click",".remove-form",removeForm);
 $("body").on("click",".input-folder",fillFolderInputs);
 $( "#add-profile-form" ).submit(submitAddProfileForm);
+$("document").ready(docReady);

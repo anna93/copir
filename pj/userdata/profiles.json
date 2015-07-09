@@ -1,0 +1,14 @@
+{
+    "profiles": [
+        {
+            "name": "atob",
+            "source": "C:\\Users\\SHEKHAR\\Desktop\\images",
+            "destination": "C:\\Users\\SHEKHAR\\Desktop\\nodepj"
+        },
+        {
+            "name": "vtu",
+            "source": "C:\\Users\\SHEKHAR\\Desktop\\images\\source",
+            "destination": "C:\\Users\\SHEKHAR\\Desktop\\images\\destination"
+        }
+    ]
+}
