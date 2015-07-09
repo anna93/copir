@@ -57,6 +57,9 @@
 
 input {
 	padding: 5px 10px; 
+	-webkit-box-shadow: 0px 0px 0px 0px rgba(33,154,179,1);
+	-moz-box-shadow: 0px 0px 0px 0px rgba(33,154,179,1);
+	box-shadow: 0px 0px 0px 0px rgba(33,154,179,1);
 	-webkit-transition: all 0.2s; /* Safari */
     transition: all 0.2s;
 }
@@ -66,6 +69,14 @@ input:focus {
 	-webkit-box-shadow: 0px 0px 10px 0px rgba(33,154,179,1);
 	-moz-box-shadow: 0px 0px 10px 0px rgba(33,154,179,1);
 	box-shadow: 0px 0px 10px 0px rgba(33,154,179,1);
+}
+
+.input-folder input {
+	direction: rtl;
+}
+
+.input-folder input::-webkit-input-placeholder {
+   direction:ltr;
 }
 
 .input-button, .input-button:focus {
@@ -85,4 +96,23 @@ input:focus {
 	-webkit-box-shadow: 0px 0px 10px 0px rgba(33,154,179,1);
 	-moz-box-shadow: 0px 0px 10px 0px rgba(33,154,179,1);
 	box-shadow: 0px 0px 10px 0px rgba(33,154,179,1);
+}
+
+.remove-form {
+	position: relative;
+	left: -136px;
+	width: 47px;
+	height: 20px;
+	border: 1px red solid;
+	margin: 7px 10px;
+	color: red;
+	padding: 2px;
+	text-align: center;
+	-webkit-transition: all 0.5s; /* Safari */
+    transition: all 0.5s;
+}
+
+.remove-form:hover {
+	color: white;
+	background-color: red;
 }
