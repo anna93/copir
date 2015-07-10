@@ -1,14 +1,24 @@
 {
     "profiles": [
         {
-            "name": "atob",
-            "source": "C:\\Users\\SHEKHAR\\Desktop\\images",
-            "destination": "C:\\Users\\SHEKHAR\\Desktop\\nodepj"
+            "name": "Sparrow - dev - production",
+            "source": "C:\\Users\\shekhar.joshi\\Desktop\\nodepj\\ng",
+            "destination": "C:\\Users\\shekhar.joshi\\Desktop\\organized\\suggestion\\code standards"
         },
         {
-            "name": "vtu",
-            "source": "C:\\Users\\SHEKHAR\\Desktop\\images\\source",
-            "destination": "C:\\Users\\SHEKHAR\\Desktop\\images\\destination"
+            "name": "Flyte - test - prod",
+            "source": "C:\\Users\\shekhar.joshi\\Desktop\\organized",
+            "destination": "C:\\Users\\shekhar.joshi\\Desktop\\tdn"
+        },
+        {
+            "name": "Flytebo - dev - prod",
+            "source": "C:\\Users\\shekhar.joshi\\Desktop\\nodepj",
+            "destination": "C:\\Users\\shekhar.joshi\\Desktop\\nodepj\\ng"
+        },
+        {
+            "name": "sdfhsgh",
+            "source": "C:\\Users\\shekhar.joshi\\Desktop\\nodepj",
+            "destination": "C:\\Users\\shekhar.joshi\\Desktop\\organized"
         }
     ]
 }

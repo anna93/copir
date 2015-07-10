@@ -1,3 +1,31 @@
+.profile-container {
+	overflow: auto;
+	text-align: center;
+}
+
+.profile-card {
+	position: relative;
+	min-width: 190px;
+	margin: 4px 4px;
+	padding: 10px;
+	background-color: #219ab3;
+	text-align: left;
+	display: inline-block;
+	font-size: 11px;
+}
+
+.del-icon {
+	font-size: 16px;
+	color: #333;
+	position: absolute;
+	right: 4px;
+	top:3px;
+}
+
+.del-icon:hover {
+	color: maroon;
+}
+
 .profile-add-container {
 	padding: 5px;
 	width: 335px;

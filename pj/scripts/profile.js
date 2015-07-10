@@ -1,5 +1,7 @@
 var profileFile = fs.open('userdata/profiles.json', 'a+');
 var profileData = [];
+var cardCounter = 1;
+
 fs.readFile('userdata/profiles.json','utf8',function(err,data) {
 	if (err) {
 		throw err;
@@ -11,7 +13,7 @@ fs.readFile('userdata/profiles.json','utf8',function(err,data) {
 	        profileData=$.parseJSON(data);
 	        if(profileData.hasOwnProperty("profiles")) {
 	        	profileData = profileData["profiles"];
-	        	generateProfileCards();
+	        	generateProfileCardsOnLoad();
 	        }
 	    }catch(e){
 	        alert("Corrupted user profile, exiting");
@@ -20,8 +22,34 @@ fs.readFile('userdata/profiles.json','utf8',function(err,data) {
 	}
 });
 
-function generateProfileCards() {
-	alert(profileData);
+function generateProfileCardsOnLoad() {
+	cardCounter = 1;
+	$(profileData).each(function() {
+		var profileCard = '';
+		profileCard += '<div class="profile-card">';
+	    profileCard += '<span id="del-'+cardCounter+'" class="del-icon octicon octicon-trashcan"></span>';
+	    profileCard += '<h4 id="profile-name-'+cardCounter+'">'+this.name+'</h4>';
+	    profileCard += 'Source:<br><span id="profile-source-'+cardCounter+'">'+this.source+'</span><br><br>';
+	    profileCard += 'Destination:<br><span id="profile-destination-'+cardCounter+'">'+this.destination+'</span>';
+	    profileCard += '</div>';
+	    cardCounter++;
+	    // alert(profileCard);
+	    $(".profile-container").append(profileCard);
+	});
+}
+
+function generateProfileCardDynamic(name,source,destination,counterId) {
+	var profileCard = '';
+	profileCard += '<div class="profile-card" style="display:none">';
+    profileCard += '<span id="del-'+counterId+'" class="del-icon octicon octicon-trashcan"></span>';
+    profileCard += '<h4 id="profile-name-'+counterId+'">'+name+'</h4>';
+    profileCard += 'Source:<br><span id="profile-source-'+counterId+'">'+source+'</span><br><br>';
+    profileCard += 'Destination:<br><span id="profile-destination-'+counterId+'">'+destination+'</span>';
+    profileCard += '</div>';
+    cardCounter++;
+    // alert(profileCard);
+    $(".profile-container").append(profileCard);
+    $("#profile-name-"+counterId).parent().fadeIn(1000);
 }
 
 function addNewForm() {
@@ -115,7 +143,11 @@ function submitAddProfileForm(e) {
   			if (err) {
   				throw err;
   			}
-  			alert("Sexes");
+  			$("[id^=tmp-container]").each(function() {
+  				var numericId = $(this).attr("id").split("-")[2];
+  				generateProfileCardDynamic($("#profile-name-input-"+numericId).val(),$("#source-input-"+numericId).val(),$("#destination-input-"+numericId).val(),cardCounter);
+  				$(this).children(".remove-form").trigger("click");
+  			});
   		});
   		console.log(JSON.stringify(objProfileData));
   	}
