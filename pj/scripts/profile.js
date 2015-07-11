@@ -1,4 +1,4 @@
-var profileFile = fs.open('userdata/profiles.json', 'a+');
+// var profileFile = fs.open('userdata/profiles.json', 'a+');
 var profileData = [];
 var cardCounter = 1;
 
@@ -148,6 +148,7 @@ function submitAddProfileForm(e) {
   				generateProfileCardDynamic($("#profile-name-input-"+numericId).val(),$("#source-input-"+numericId).val(),$("#destination-input-"+numericId).val(),cardCounter);
   				$(this).children(".remove-form").trigger("click");
   			});
+  			$(".input-button").remove();
   		});
   		console.log(JSON.stringify(objProfileData));
   	}
