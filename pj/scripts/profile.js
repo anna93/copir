@@ -154,6 +154,30 @@ function submitAddProfileForm(e) {
   	}
 }
 
+function deleteCard() {
+	var profileName = $(this).next().html();
+
+	$(profileData).each(function(i) {
+		if(this.name == profileName) {
+			profileData.splice(i,1);
+		}
+	});
+
+	var objProfileData = {};
+	objProfileData.profiles = profileData;
+  		fs.writeFile('userdata/profiles.json',JSON.stringify(objProfileData, null, 4),function(err) {
+  			if (err) {
+  				alert("An error occurred, exiting!");
+  				throw err;
+  				win.close();
+  			}
+  		});
+
+	$(this).parent().fadeOut(500,function() {
+		$(this).remove();
+	});
+}
+
 function docReady() {
 
 }
@@ -162,4 +186,5 @@ $(".profile-add-btn").click(addNewForm);
 $("div").on("click",".remove-form",removeForm);
 $("body").on("click",".input-folder",fillFolderInputs);
 $( "#add-profile-form" ).submit(submitAddProfileForm);
+$("body").on("click",".del-icon",deleteCard);
 $("document").ready(docReady);
