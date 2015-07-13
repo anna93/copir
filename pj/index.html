@@ -6,6 +6,7 @@
 	<link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.min.css">	
 	<link rel="stylesheet" type="text/css" href="styles/main.css">
 	<link rel="stylesheet" type="text/css" href="styles/profile.css">
+	<link rel="stylesheet" type="text/css" href="styles/copy.css">
 </head>
 <body>
 	<div id="header">
@@ -65,6 +66,33 @@
 
 
 	    <div role="tabpanel" class="tab-pane fade" id="copy">
+	    <br>
+    	<div class="copy-inputs">
+	    	<center>
+	    		<div class="input-file">
+  					<select id="profile-selector">
+  						<option value="" disabled selected>Choose a profile</option>
+		    			<option>asdgadfg - sdagdfsg - asrgarfgasdgadfg - sdagdfsg - asrgarfg</option>
+		    			<option>asdgadfg - sdagdfsg - asrgarfg</option>
+		    			<option>asdgadfg - sdagdfsg - asrgarfg</option>
+		    			<option>asdgadfg - sdagdfsg - asrgarfg</option>
+		    			<option>asdgadfg - sdagdfsg - asrgarfg</option>
+		    		</select>
+	    			<span class="mega-octicon octicon-chevron-down"></span>
+	    		</div> 		
+	    		<div class="input-file" style="margin-left:100px">
+	    			<span class="mega-octicon octicon-file-text"></span>
+  					<input readonly placeholder="Input File">
+	    		</div>
+	    	</center>
+    	</div>
+
+    	<div class="selector-container">
+    		<div id="selector-left"></div>
+    		<div id="selector-controls-container"></div>
+    		<div id="selector-right"></div>
+    	</div>
+	    
 <!-- 	    	<a href="views/profile.html">Profile</a>
 			<input type="file" style="display:none" id="source" webkitdirectory directory multiple/>
 			<button id="btnSource">Choose Source</button><br><br>
