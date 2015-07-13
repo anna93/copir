@@ -1,9 +1,9 @@
 {
     "profiles": [
         {
-            "name": "Sparrow-dev to test",
-            "source": "C:\\Users\\shekhar.joshi\\Desktop\\organized",
-            "destination": "C:\\Users\\shekhar.joshi\\Desktop\\tdn"
+            "name": "Sparrow-test-development",
+            "source": "C:\\Users\\SHEKHAR\\Desktop\\nodepj",
+            "destination": "C:\\Users\\SHEKHAR\\Desktop\\pavan"
         }
     ]
 }

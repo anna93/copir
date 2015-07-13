@@ -22,6 +22,7 @@
 			<span class="nav-item" aria-controls="about">About</span>
 		</div>
 		<input type="file" style="display:none" id="folder-input-common" webkitdirectory directory multiple/>
+		<input type="file" style="display:none" id="file-input-common"/>
 	</div>
 	
 
@@ -72,26 +73,35 @@
 	    		<div class="input-file">
   					<select id="profile-selector">
   						<option value="" disabled selected>Choose a profile</option>
-		    			<option>asdgadfg - sdagdfsg - asrgarfgasdgadfg - sdagdfsg - asrgarfg</option>
-		    			<option>asdgadfg - sdagdfsg - asrgarfg</option>
-		    			<option>asdgadfg - sdagdfsg - asrgarfg</option>
-		    			<option>asdgadfg - sdagdfsg - asrgarfg</option>
-		    			<option>asdgadfg - sdagdfsg - asrgarfg</option>
+		    			<option class="volatile">asdgadfg - sdagdfsg - asrgarfgasdgadfg - sdagdfsg - asrgarfg</option>
+		    			<option class="volatile">asdgadfg - sdagdfsg - asrgarfg</option>
+		    			<option class="volatile">asdgadfg - sdagdfsg - asrgarfg</option>
+		    			<option class="volatile">asdgadfg - sdagdfsg - asrgarfg</option>
+		    			<option class="volatile">asdgadfg - sdagdfsg - asrgarfg</option>
 		    		</select>
 	    			<span class="mega-octicon octicon-chevron-down"></span>
 	    		</div> 		
 	    		<div class="input-file" style="margin-left:100px">
 	    			<span class="mega-octicon octicon-file-text"></span>
-  					<input readonly placeholder="Input File">
+  					<input id="input-file-txt" readonly placeholder="Input File">
 	    		</div>
 	    	</center>
     	</div>
 
     	<div class="selector-container">
     		<div id="selector-left"></div>
-    		<div id="selector-controls-container"></div>
+    		<div id="selector-controls-container">
+    			<center>
+	    			<span class="mega-octicon octicon-chevron-right"></span><br>
+	    			<span class="mega-octicon octicon-chevron-left"></span>
+	    		</center>
+    		</div>
     		<div id="selector-right"></div>
     	</div>
+
+    	<center>
+			<div class="copy-btn">C O P Y</div>
+		</center>
 	    
 <!-- 	    	<a href="views/profile.html">Profile</a>
 			<input type="file" style="display:none" id="source" webkitdirectory directory multiple/>
@@ -122,4 +132,5 @@
 <script type="text/javascript" src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="scripts/main.js"></script>
 <script type="text/javascript" src="scripts/profile.js"></script>
+<script type="text/javascript" src="scripts/copy.js"></script>
 </html>

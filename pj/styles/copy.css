@@ -1,3 +1,7 @@
+.copy-inputs {
+	margin-top: 15px;
+}
+
 .input-file {
 	margin-top: 7px;
 	height: 40px;
@@ -13,6 +17,7 @@
 }
 
 .input-file input {
+	direction: rtl;
 	position: relative;
 	top: -6px;
 	width: 279px;
@@ -21,6 +26,10 @@
 	border: 1px #219ab3 solid;
 	font-size: 16px;
 	color: #219ab3;
+}
+
+.input-file input::-webkit-input-placeholder {
+   direction:ltr;
 }
 
 #profile-selector {
@@ -51,15 +60,57 @@
 }
 
 .selector-container {
-	border: 1px blue solid;
 	padding: 5px;
-	margin-top: 10px;
+	margin-top: 40px;
 	overflow: auto;
 }
 
 #selector-left, #selector-right {
-	border: 1px red solid;
-	width: 200px;
-	height: 400px;
+	border: 1px #219ab3 solid;
+	width: 320px;
+	height: 325px;
 	float: left;
+}
+
+#selector-left {
+	margin-left: 68px;
+}
+
+#selector-controls-container {
+	width: 103px;
+	height: 325px;
+	float: left;
+}
+
+#selector-controls-container span {
+	margin-top: 72px;
+	border-radius: 30px;
+	display: inline-block;
+	padding: 10px 20px;
+	border: 1px #219ab3 solid;
+	color: #219ab3;
+	-webkit-transition: all 0.5s; /* Safari */
+    transition: all 0.5s;
+}
+
+#selector-controls-container span:hover {
+	color: white;
+	background-color: #219ab3; 
+}
+
+.copy-btn {
+	width: 220px;
+	height: 40px;
+	border: 1px #219ab3 solid;
+	margin: 25px 10px;
+	color: #219ab3;
+	padding: 9px;
+	text-align: center;
+	-webkit-transition: all 0.5s; /* Safari */
+    transition: all 0.5s;
+}
+
+.copy-btn:hover {
+	color: white;
+	background-color: #219ab3;
 }
