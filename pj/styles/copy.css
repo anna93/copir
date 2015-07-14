@@ -70,6 +70,19 @@
 	width: 320px;
 	height: 325px;
 	float: left;
+	white-space: nowrap;
+	padding: 5px;
+	overflow-x:hidden;
+	font-size: 14px;
+	font-weight: 100;
+	color: #219ab3; 
+}
+
+#selector-left label, #selector-right label {
+	direction: rtl;
+	width: 280px;
+	float: right;
+	overflow-x:hidden;
 }
 
 #selector-left {
