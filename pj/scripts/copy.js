@@ -74,7 +74,24 @@ $('body').on('change','#select-all-left',function() {
 			$(this).parent().css("background-color","#101010");
 		});
 	}
-})
+});
+
+$('body').on('change','#select-all-right',function() {
+	if($(this).is(":checked")) {
+		$(this).parent().css("background-color","#333");
+		$("#selector-right .cbk-right").each(function() {
+			$(this).prop("checked",true);
+			$(this).parent().css("background-color","#333");
+		});
+	}
+	else {
+		$(this).parent().css("background-color","#101010");
+		$("#selector-right .cbk-right").each(function() {
+			$(this).prop("checked",false);
+			$(this).parent().css("background-color","#101010");
+		});
+	}
+});
 
 $('body').on('change','.cbk-left',function() {
 	if($(this).is(":checked")) {
@@ -87,6 +104,58 @@ $('body').on('change','.cbk-left',function() {
 	}
 });
 
+$('body').on('change','.cbk-right',function() {
+	if($(this).is(":checked")) {
+		$(this).parent().css("background-color","#333");
+	}
+	else {
+		$(this).parent().css("background-color","#101010");
+		$("#select-all-right").prop("checked",false);
+		$("#select-all-right").parent().css("background-color","#101010");
+	}
+});
+
+function moveRight() {
+	if($(".cbk-left:checked").length > 0) {
+		var rows = '';
+		if($("#selector-right input").length == 0) {
+			rows += '<div><input id="select-all-right" type="checkbox">&nbsp;<label style="direction:ltr">Select all</label><div class="clearfix"></div></div>';
+		}
+
+		$(".cbk-left:checked").each(function() {
+			var text = $(this).next().html();
+			$(this).parent().remove();
+			rows += '<div title="'+text+'"><input class="cbk-right" type="checkbox">&nbsp;<label>'+text+'</label><div class="clearfix"></div></div>';		
+		});
+		$("#selector-right").append(rows);
+		
+		if($("#selector-left input").length == 1) {
+			$("#selector-left").html('');
+		}
+	}
+}
+
+function moveLeft() {
+	if($(".cbk-right:checked").length > 0) {
+		var rows = '';
+		if($("#selector-left input").length == 0) {
+			rows += '<div><input id="select-all-left" type="checkbox">&nbsp;<label style="direction:ltr">Select all</label><div class="clearfix"></div></div>';
+		}
+
+		$(".cbk-right:checked").each(function() {
+			var text = $(this).next().html();
+			$(this).parent().remove();
+			rows += '<div title="'+text+'"><input class="cbk-left" type="checkbox">&nbsp;<label>'+text+'</label><div class="clearfix"></div></div>';		
+		});
+		$("#selector-left").append(rows);
+		
+		if($("#selector-right input").length == 1) {
+			$("#selector-right").html('');
+		}
+	}
+}
 
 $("#profile-selector").mouseenter(updateDropDown);
 $("#input-file-txt").click(fillFileInputs);
+$("#move-right").click(moveRight);
+$("#move-left").click(moveLeft);

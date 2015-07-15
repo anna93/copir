@@ -2,6 +2,8 @@
 var profileData = [];
 var cardCounter = 1;
 
+$('a[aria-controls="copy"]').tab('show');
+
 fs.readFile('userdata/profiles.json','utf8',function(err,data) {
 	if (err) {
 		throw err;
