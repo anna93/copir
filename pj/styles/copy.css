@@ -78,10 +78,14 @@
 	color: #219ab3; 
 }
 
+#selector-left input, #selector-right input {
+	float: left;
+}
+
 #selector-left label, #selector-right label {
 	direction: rtl;
-	width: 280px;
-	float: right;
+	max-width: 280px;
+	float: left;
 	overflow-x:hidden;
 }
 

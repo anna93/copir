@@ -4,11 +4,6 @@
             "name": "Sparrow - Dev to test",
             "source": "C:\\Users\\SHEKHAR\\Desktop\\nodepj",
             "destination": "C:\\Users\\SHEKHAR\\Desktop\\pavan"
-        },
-        {
-            "name": "Sparrow - Test to Prod",
-            "source": "C:\\Users\\SHEKHAR\\Desktop\\images",
-            "destination": "C:\\Users\\SHEKHAR\\Desktop\\nodepj"
         }
     ]
 }

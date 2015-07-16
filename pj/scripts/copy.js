@@ -59,7 +59,7 @@ function populateLeftHelper(content) {
 }
 
 
-$('body').on('change','#select-all-left',function() {
+function selectAllLeft() {
 	if($(this).is(":checked")) {
 		$(this).parent().css("background-color","#333");
 		$("#selector-left .cbk-left").each(function() {
@@ -74,9 +74,10 @@ $('body').on('change','#select-all-left',function() {
 			$(this).parent().css("background-color","#101010");
 		});
 	}
-});
+}
 
-$('body').on('change','#select-all-right',function() {
+
+function selectAllRight() {
 	if($(this).is(":checked")) {
 		$(this).parent().css("background-color","#333");
 		$("#selector-right .cbk-right").each(function() {
@@ -91,9 +92,10 @@ $('body').on('change','#select-all-right',function() {
 			$(this).parent().css("background-color","#101010");
 		});
 	}
-});
+}
 
-$('body').on('change','.cbk-left',function() {
+
+function changeBackgroundColorCbkLeft() {
 	if($(this).is(":checked")) {
 		$(this).parent().css("background-color","#333");
 	}
@@ -102,9 +104,9 @@ $('body').on('change','.cbk-left',function() {
 		$("#select-all-left").prop("checked",false);
 		$("#select-all-left").parent().css("background-color","#101010");
 	}
-});
+}
 
-$('body').on('change','.cbk-right',function() {
+function changeBackgroundColorCbkRight() {
 	if($(this).is(":checked")) {
 		$(this).parent().css("background-color","#333");
 	}
@@ -113,7 +115,8 @@ $('body').on('change','.cbk-right',function() {
 		$("#select-all-right").prop("checked",false);
 		$("#select-all-right").parent().css("background-color","#101010");
 	}
-});
+}
+
 
 function moveRight() {
 	if($(".cbk-left:checked").length > 0) {
@@ -159,3 +162,7 @@ $("#profile-selector").mouseenter(updateDropDown);
 $("#input-file-txt").click(fillFileInputs);
 $("#move-right").click(moveRight);
 $("#move-left").click(moveLeft);
+$('body').on('change','#select-all-left',selectAllLeft);
+$('body').on('change','#select-all-right',selectAllRight);
+$('body').on('change','.cbk-right',changeBackgroundColorCbkRight);
+$('body').on('change','.cbk-left',changeBackgroundColorCbkLeft);
