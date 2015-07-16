@@ -46,6 +46,19 @@ function populateLeft() {
 	});
 }
 
+function populateLeftUsingCopy() {
+	var content = '';
+	$('<textarea></textarea>').attr('id', 'paste').appendTo('#selector-left');
+	$("#paste").focus();
+	var context = this;
+	setTimeout(function() {
+		$(context).paste;
+		content = $("#paste").val();
+		content = content.split("\n");
+		populateLeftHelper(content);
+	}, 10);
+}
+
 function populateLeftHelper(content) {
 	$("#selector-left, #selector-right").html();
 	var rows = '';
@@ -159,6 +172,7 @@ function moveLeft() {
 }
 
 $("#profile-selector").mouseenter(updateDropDown);
+$('#selector-left').on('paste', populateLeftUsingCopy);
 $("#input-file-txt").click(fillFileInputs);
 $("#move-right").click(moveRight);
 $("#move-left").click(moveLeft);
