@@ -46,17 +46,13 @@ function populateLeft() {
 	});
 }
 
-function populateLeftUsingCopy() {
+function populateLeftUsingCopy(e) {
+	e.preventDefault();
 	var content = '';
-	$('<textarea></textarea>').attr('id', 'paste').appendTo('#selector-left');
-	$("#paste").focus();
-	var context = this;
-	setTimeout(function() {
-		$(context).paste;
-		content = $("#paste").val();
-		content = content.split("\n");
-		populateLeftHelper(content);
-	}, 10);
+	content = e.originalEvent.clipboardData.getData('text');
+	content = content.replace(/\//g, '\\');
+	content = content.split("\n");
+	populateLeftHelper(content);
 }
 
 function populateLeftHelper(content) {
@@ -65,7 +61,8 @@ function populateLeftHelper(content) {
 	rows += '<div><input id="select-all-left" type="checkbox">&nbsp;<label style="direction:ltr">Select all</label><div class="clearfix"></div></div>';
 
 	$(content).each(function() {
-		rows += '<div title="'+this+'"><input class="cbk-left" type="checkbox">&nbsp;<label>'+this+'</label><div class="clearfix"></div></div>';		
+		console.log(this);
+		rows += '<div title="'+this+'"><input class="cbk-left" type="checkbox">&nbsp;<label>'+this.replace("\\",'')+'</label><div class="clearfix"></div></div>';		
 	});
 
 	$("#selector-left").html(rows);
