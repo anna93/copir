@@ -6,7 +6,8 @@
     "toolbar": false,
     "resizable": false,
     "width": 900,
-    "height": 700
+    "height": 700,
+    "icon": "resources/icon.png"
   },
   "dependencies": {
     "fs-extra": "^0.22.1",
