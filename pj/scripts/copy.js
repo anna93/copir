@@ -1,3 +1,4 @@
+var fse = require('fs-extra');
 var inputFileVal = '';
 
 function updateDropDown() {
@@ -46,7 +47,7 @@ function populateLeft() {
 	});
 }
 
-function populateLeftUsingCopy(e) {
+function populateLeftUsingPaste(e) {
 	e.preventDefault();
 	var content = '';
 	content = e.originalEvent.clipboardData.getData('text');
@@ -59,13 +60,30 @@ function populateLeftHelper(content) {
 	$("#selector-left, #selector-right").html();
 	var rows = '';
 	rows += '<div><input id="select-all-left" type="checkbox">&nbsp;<label style="direction:ltr">Select all</label><div class="clearfix"></div></div>';
-
+	var isInputFromUpdateCommand = false;
+	var projectURLFromInput = '';
 	$(content).each(function() {
-		console.log(this);
-		rows += '<div title="'+this+'"><input class="cbk-left" type="checkbox">&nbsp;<label>'+this.replace("\\",'')+'</label><div class="clearfix"></div></div>';		
+		var line = this.split(' ');
+		if(line[0] === "Command:" || line[0] === "Updating:" || line[0] === "Completed:") {
+			isInputFromUpdateCommand = true;
+			if(line[0] === "Updating:")	{
+				projectURLFromInput = line[1] ;
+			}
+			return;
+		}
+
+		var displayPath = this;
+		if(isInputFromUpdateCommand) {
+			displayPath = line[1].replace(projectURLFromInput,'');
+		}
+
+		var displayPathWithoutLeadingSlash;
+		displayPathWithoutLeadingSlash = displayPath[0]=="\\"?displayPath.replace("\\",''):displayPath;
+		rows += '<div title="'+displayPath+'"><input class="cbk-left" type="checkbox">&nbsp;<label>'+displayPathWithoutLeadingSlash+'</label><div class="clearfix"></div></div>';		
 	});
 
 	$("#selector-left").html(rows);
+	$('#selector-left').prop("contenteditable",false);
 }
 
 
@@ -137,8 +155,9 @@ function moveRight() {
 
 		$(".cbk-left:checked").each(function() {
 			var text = $(this).next().html();
+			var title = $(this).parent().prop('title');
 			$(this).parent().remove();
-			rows += '<div title="'+text+'"><input class="cbk-right" type="checkbox">&nbsp;<label>'+text+'</label><div class="clearfix"></div></div>';		
+			rows += '<div class="files-tobe-copied" title="'+title+'"><input class="cbk-right" type="checkbox">&nbsp;<label>'+text+'</label><div class="clearfix"></div></div>';		
 		});
 		$("#selector-right").append(rows);
 		
@@ -157,8 +176,9 @@ function moveLeft() {
 
 		$(".cbk-right:checked").each(function() {
 			var text = $(this).next().html();
+			var title = $(this).parent().prop('title');
 			$(this).parent().remove();
-			rows += '<div title="'+text+'"><input class="cbk-left" type="checkbox">&nbsp;<label>'+text+'</label><div class="clearfix"></div></div>';		
+			rows += '<div title="'+title+'"><input class="cbk-left" type="checkbox">&nbsp;<label>'+text+'</label><div class="clearfix"></div></div>';		
 		});
 		$("#selector-left").append(rows);
 		
@@ -168,8 +188,49 @@ function moveLeft() {
 	}
 }
 
+function startFileCopy() {
+	if($("#profile-selector option[class=volatile]:selected").length == 0) {
+		alert('You must select a profile');
+		return false;
+	}
+
+	var errorWhileCopying = false;
+	var source = $("#profile-selector option[class=volatile]:selected").attr("data-source");
+	var destination = $("#profile-selector option[class=volatile]:selected").attr("data-destination");
+
+	if($('.files-tobe-copied').length == 0) {
+		alert("Please move file list from left to right before copy");
+		return;
+	}
+
+	if(confirm('Are you sure, you want files listed in the right to be copied\n from:'+source+'\n to:'+destination)) {
+		$(".files-tobe-copied").each(function () {
+			var fileDirectory = $(this).prop('title');
+			fse.copySync((source+fileDirectory).replace(/(\r\n|\n|\r)/gm,""), 
+			(destination+fileDirectory).replace(/(\r\n|\n|\r)/gm,""), 
+			{ replace: true }, 
+			function (err) {
+			  if (err) {
+			  	errorWhileCopying = true;
+			    console.error(err);
+			    throw err;
+			  }			  
+			});
+		});
+
+		if(errorWhileCopying) {
+			alert("There were some errors while copying files");			
+		}
+		else {
+			alert("All files copied successully");
+		}
+
+		$("#selector-right").html('');
+	}
+}
+
 $("#profile-selector").mouseenter(updateDropDown);
-$('#selector-left').on('paste', populateLeftUsingCopy);
+$('#selector-left').on('paste', populateLeftUsingPaste);
 $("#input-file-txt").click(fillFileInputs);
 $("#move-right").click(moveRight);
 $("#move-left").click(moveLeft);
@@ -177,3 +238,4 @@ $('body').on('change','#select-all-left',selectAllLeft);
 $('body').on('change','#select-all-right',selectAllRight);
 $('body').on('change','.cbk-right',changeBackgroundColorCbkRight);
 $('body').on('change','.cbk-left',changeBackgroundColorCbkLeft);
+$('#copy-btn').on('click',startFileCopy);

@@ -127,7 +127,7 @@
 	background-color: #219ab3; 
 }
 
-.copy-btn {
+#copy-btn {
 	width: 220px;
 	height: 40px;
 	border: 1px #219ab3 solid;
@@ -139,7 +139,7 @@
     transition: all 0.5s;
 }
 
-.copy-btn:hover {
+#copy-btn:hover {
 	color: white;
 	background-color: #219ab3;
 }

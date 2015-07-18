@@ -1,5 +1,4 @@
 var fs = require('fs');
-var fse = require('fs.extra');
 var gui = require('nw.gui');
 var win = gui.Window.get();
 

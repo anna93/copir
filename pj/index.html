@@ -20,6 +20,7 @@
 			<span class="nav-item" aria-controls="profile">Profile</span>
 			<span class="nav-item" aria-controls="copy">Copy</span>
 			<span class="nav-item" aria-controls="about">About</span>
+			<span class="nav-item" style="background-color: red;position:relative;left:665px;" onclick="location.reload()">Reset</span>
 		</div>
 		<input type="file" style="display:none" id="folder-input-common" webkitdirectory directory multiple/>
 		<input type="file" style="display:none" id="file-input-common"/>
@@ -88,36 +89,26 @@
     		</div>
     		<div id="selector-controls-container">
     			<center>
-	    			<span id="move-right" class="mega-octicon octicon-chevron-right"></span><br>
-	    			<span id="move-left" class="mega-octicon octicon-chevron-left"></span>
+	    			<span title='Queue for copy' id="move-right" class="mega-octicon octicon-chevron-right"></span><br>
+	    			<span title='Unqueue for copy' id="move-left" class="mega-octicon octicon-chevron-left"></span>
 	    		</center>
     		</div>
     		<div id="selector-right"></div>
     	</div>
 
     	<center>
-			<div class="copy-btn">C O P Y</div>
+			<div id="copy-btn">C O P Y</div>
 		</center>
-	    
-<!-- 	    	<a href="views/profile.html">Profile</a>
-			<input type="file" style="display:none" id="source" webkitdirectory directory multiple/>
-			<button id="btnSource">Choose Source</button><br><br>
-
-			<input type="file" style="display:none" id="destination" webkitdirectory directory multiple/>
-			<button id="btnDestination">Choose Destination</button><br><br>
-
-
-			<input type="file" id="input"><br><br>
-
-			<span id="valSource"></span><br>
-			<span id="valDestination"></span><br>
-			<span id="valInput"></span><br>
-			<div id="inputContent"></div><br> -->
+		
 	    </div>
 
 
 
-	    <div role="tabpanel" class="tab-pane fade" id="about">.4..</div>
+	    <div role="tabpanel" class="tab-pane fade" id="about">
+	    	<center>
+	    	&copy;&nbsp;Shekhar Joshi
+	    	</center>
+	    </div>
 	  	</div>
 
 	</div>
