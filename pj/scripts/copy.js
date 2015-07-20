@@ -80,6 +80,10 @@ function populateLeftHelper(content) {
 		var displayPath = this;
 		if(isInputFromUpdateCommand) {
 			displayPath = line[1].replace(projectURLFromInput,'');
+		}else {
+			displayPath = displayPath.split('\\');
+			displayPath.splice(1, 1);
+			displayPath = displayPath.join('\\');
 		}
 
 		var displayPathWithoutLeadingSlash;
@@ -218,7 +222,6 @@ function startFileCopy() {
 			  if (err) {
 			  	errorWhileCopying = true;
 			    console.error(err);
-			    throw err;
 			  }			  
 			});
 		});
