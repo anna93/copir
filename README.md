@@ -12,3 +12,5 @@ list of files need to be copied and Voilà, the job is done!
     bower install
     cd ..
     nw pj
+
+Link to Instructions for users: https://github.com/anna93/copir/wiki/How-to-use-Copir
