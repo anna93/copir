@@ -64,6 +64,11 @@ function populateLeftHelper(content) {
 	var projectURLFromInput = '';
 	$(content).each(function() {
 		var line = this.split(' ');
+
+		if(line[0].length <= 1) {
+			return;
+		}
+
 		if(line[0] === "Command:" || line[0] === "Updating:" || line[0] === "Completed:") {
 			isInputFromUpdateCommand = true;
 			if(line[0] === "Updating:")	{
