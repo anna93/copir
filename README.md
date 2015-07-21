@@ -13,4 +13,7 @@ list of files need to be copied and Voilà, the job is done!
     cd ..
     nw pj
 
+Learn node webkit here: https://github.com/nwjs/nw.js/wiki
+
+
 Link to Instructions for users: https://github.com/anna93/copir/wiki/How-to-use-Copir
