@@ -59,6 +59,8 @@ html, body {
 }
 
 #top-nav {
+	position: relative;
+	top:-5px;
 	-webkit-app-region: no-drag;
 }
 

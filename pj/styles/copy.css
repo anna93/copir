@@ -62,14 +62,14 @@
 .selector-container {
 	padding: 5px;
 	margin-top: 40px;
-	overflow: auto;
+	height: 360px;
 }
 
 #selector-left, #selector-right {
 	border: 1px #219ab3 solid;
 	width: 320px;
 	height: 325px;
-	float: left;
+	display: inline-block;
 	white-space: nowrap;
 	padding: 5px;
 	overflow-x:hidden;
@@ -101,14 +101,13 @@
 	overflow-x:hidden;
 }
 
-#selector-left {
-	margin-left: 68px;
-}
 
 #selector-controls-container {
 	width: 103px;
 	height: 325px;
-	float: left;
+	display: inline-block;
+	position: relative;
+	top: -100px;
 }
 
 #selector-controls-container span {

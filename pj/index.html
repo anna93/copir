@@ -10,6 +10,8 @@
 </head>
 <body>
 	<div id="header">
+		<img src="resources/icon.png" height="40px" style="position: relative;top: -20px;" />
+		&nbsp;
 		<h1>copir</h1>
 		<div id="window-controls">
 			<span id="minimize" class="octicon octicon-dash"></span>
@@ -20,7 +22,7 @@
 			<span class="nav-item" aria-controls="profile">Profile</span>
 			<span class="nav-item" aria-controls="copy">Copy</span>
 			<span class="nav-item" aria-controls="about">About</span>
-			<span class="nav-item" style="background-color: red;position:relative;left:665px;" onclick="location.reload()">Reset</span>
+			<span class="nav-item" style="background-color: red;float:right" onclick="location.reload()">Reset</span>
 		</div>
 		<input type="file" style="display:none" id="folder-input-common" webkitdirectory directory multiple/>
 		<input type="file" style="display:none" id="file-input-common"/>
@@ -84,6 +86,8 @@
 	    	</center>
     	</div>
 
+
+    		<center>
     	<div class="selector-container">
     		<div id="selector-left" contenteditable>
     		</div>
@@ -95,6 +99,8 @@
     		</div>
     		<div id="selector-right"></div>
     	</div>
+    	</center>
+
 
     	<center>
 			<div id="copy-btn">C O P Y</div>
