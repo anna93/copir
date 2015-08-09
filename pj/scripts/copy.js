@@ -215,15 +215,19 @@ function startFileCopy() {
 	if(confirm('Are you sure, you want files listed in the right to be copied\n from:'+source+'\n to:'+destination)) {
 		$(".files-tobe-copied").each(function () {
 			var fileDirectory = $(this).prop('title');
-			fse.copySync((source+fileDirectory).replace(/(\r\n|\n|\r)/gm,""), 
-			(destination+fileDirectory).replace(/(\r\n|\n|\r)/gm,""), 
-			{ replace: true }, 
-			function (err) {
-			  if (err) {
-			  	errorWhileCopying = true;
-			    console.error(err);
-			  }			  
-			});
+			try {
+				fse.copySync((source+fileDirectory).replace(/(\r\n|\n|\r)/gm,""), 
+				(destination+fileDirectory).replace(/(\r\n|\n|\r)/gm,""), 
+				{ replace: true }, 
+				function (err) {
+				  if (err) {
+				    console.error(err);
+				  }			  
+				});
+			}
+			catch(err) {
+				errorWhileCopying = true;	
+			}
 		});
 
 		if(errorWhileCopying) {
