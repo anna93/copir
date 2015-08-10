@@ -6,8 +6,8 @@ into each subdirectory and copy the required file and then navigate back to othe
 list of files needed to be copied and Voilà, the job is done!
 
 ## Instructions for developers
-    git clone https://github.com/anna93/copir.git
-    cd pj/
+    git clone https://github.com/anna93/copir.git copir
+    cd copir/pj/
     npm install
     bower install
     cd ..
