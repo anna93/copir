@@ -59,6 +59,7 @@ function populateLeftUsingPaste(e) {
 function populateLeftHelper(content) {
 	$("#selector-left, #selector-right").html();
 	var rows = '';
+	rows += '<input id="file-filter" placeholder="filter" title="use | to filter multiple file names"><br/><div class="clearfix"></div>';
 	rows += '<div><input id="select-all-left" type="checkbox">&nbsp;<label style="direction:ltr">Select all</label><div class="clearfix"></div></div>';
 	var isInputFromUpdateCommand = false;
 	var projectURLFromInput = '';
@@ -96,17 +97,43 @@ function populateLeftHelper(content) {
 }
 
 
+function fnFilterFiles() {
+	var regexp = new RegExp($('#file-filter').val(), 'gi');
+	var visible = [];
+	$('.cbk-left').each(function() {
+		var filePath = $(this).next().html();
+		if(!filePath.match(regexp)) {
+			$(this).parent().css('display','none');
+		}
+		else {
+			$(this).parent().css('display','block');
+		}
+	});
+
+	if($('.cbk-left').parent().filter(function () { 
+    	return this.style.display == 'block' 
+	}).length == 0) {
+		$('#select-all-left').parent().css('display','none');
+	}
+	else {
+		$('#select-all-left').parent().css('display','block');
+	}
+}
+
 function selectAllLeft() {
 	if($(this).is(":checked")) {
 		$(this).parent().css("background-color","#333");
 		$("#selector-left .cbk-left").each(function() {
+			if($(this).parent().css('display')=='none') { //ignoring the ones which were filtered out
+				return; 
+			}
 			$(this).prop("checked",true);
 			$(this).parent().css("background-color","#333");
 		});
 	}
-	else {
+	else {		
 		$(this).parent().css("background-color","#101010");
-		$("#selector-left .cbk-left").each(function() {
+		$("#selector-left .cbk-left").each(function() {			
 			$(this).prop("checked",false);
 			$(this).parent().css("background-color","#101010");
 		});
@@ -128,7 +155,7 @@ function selectAllRight() {
 			$(this).prop("checked",false);
 			$(this).parent().css("background-color","#101010");
 		});
-	}
+	}	
 }
 
 
@@ -162,7 +189,7 @@ function moveRight() {
 			rows += '<div><input id="select-all-right" type="checkbox">&nbsp;<label style="direction:ltr">Select all</label><div class="clearfix"></div></div>';
 		}
 
-		$(".cbk-left:checked").each(function() {
+		$(".cbk-left:checked").each(function() {			
 			var text = $(this).next().html();
 			var title = $(this).parent().prop('title');
 			$(this).parent().remove();
@@ -170,16 +197,18 @@ function moveRight() {
 		});
 		$("#selector-right").append(rows);
 		
-		if($("#selector-left input").length == 1) {
+		if($("#selector-left input").length == 2) {
 			$("#selector-left").html('');
+			$("#selector-left").html('<input id="file-filter" placeholder="filter" title="use | to filter multiple file names"><br/><div class="clearfix"></div>');
 		}
 	}
+	$('#select-all-left').trigger('click');
 }
 
 function moveLeft() {
 	if($(".cbk-right:checked").length > 0) {
 		var rows = '';
-		if($("#selector-left input").length == 0) {
+		if($("#selector-left input").length == 1) {
 			rows += '<div><input id="select-all-left" type="checkbox">&nbsp;<label style="direction:ltr">Select all</label><div class="clearfix"></div></div>';
 		}
 
@@ -221,11 +250,13 @@ function startFileCopy() {
 				{ replace: true }, 
 				function (err) {
 				  if (err) {
+				  	alert(err);
 				    console.error(err);
 				  }			  
 				});
 			}
 			catch(err) {
+				alert("Error in copying "+source+fileDirectory);
 				errorWhileCopying = true;	
 			}
 		});
@@ -251,3 +282,4 @@ $('body').on('change','#select-all-right',selectAllRight);
 $('body').on('change','.cbk-right',changeBackgroundColorCbkRight);
 $('body').on('change','.cbk-left',changeBackgroundColorCbkLeft);
 $('#copy-btn').on('click',startFileCopy);
+$('body').on('keyup','#file-filter',fnFilterFiles);

@@ -47,6 +47,15 @@
     transition: all 0.2s;
 }
 
+#file-filter{
+	display: block;
+	width: 100%;
+	background-color: black;
+	border: 1px #219ab3 solid;
+	font-size: 16px;
+	color: #219ab3;
+}
+
 .octicon-chevron-down {
 	position: relative;
   	right: 3px;
