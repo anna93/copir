@@ -32,12 +32,22 @@ html, body {
 	-webkit-app-region: no-drag;
 }
 
-#minimize, #close {
+#minimize, #close, #max-min {
 	font-size: 30px;
 	position: relative;
 	top: -4px;
 	-webkit-transition: color 0.5s; /* Safari */
     transition: color 0.5s;
+}
+
+#max-min {
+	font-size: 20px;
+	position: relative;
+	top: -5px;
+}
+
+#max-min:hover {
+	color: lightgreen;
 }
 
 #close:hover {

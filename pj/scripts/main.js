@@ -6,6 +6,21 @@ $("#minimize").click(function() {
 	win.minimize();
 });
 
+$("#max-min").click(function() {
+	if(win.width > 900) {
+		$("#max-min").removeClass("octicon-screen-normal");
+		$("#max-min").addClass("octicon-screen-full");
+		$("#max-min").prop('title','Full-screen');
+		win.unmaximize();
+	}
+	else {	
+		$("#max-min").removeClass("octicon-screen-full");
+		$("#max-min").addClass("octicon-screen-normal");
+		$("#max-min").prop('title','Exit full-screen');	
+		win.maximize();
+	}
+});
+
 $("#close").click(function() {
 	win.close();
 });
